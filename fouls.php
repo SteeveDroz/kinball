@@ -11,17 +11,11 @@ if (!empty($_POST['teams']) && !empty($_POST['id']) && !empty($_POST['point']))
     $file = getFileName($teams);
     $game = file_exists($file) ? json_decode(file_get_contents($file)) : initGame($teams);
 
-    if ($point > 0)
+    foreach ($game as $teamId => $team)
     {
-        $game->{$id}->points += $point;
-    }
-    else {
-        foreach ($game as $teamId => $team)
+        if ($teamId != $id)
         {
-            if ($teamId != $id)
-            {
-                $game->{$teamId}->points -= $point;
-            }
+            $game->{$teamId}->points += $point;
         }
     }
 

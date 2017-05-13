@@ -17,18 +17,11 @@ $(function() {
         title.prop('contenteditable', true).css('cursor', 'pointer')
         $(this).append(title)
 
-        const point = $('<button>', {
-            text: config.trans.point,
-            click: function() {
-                addPoint(id, 1)
-            }
-        })
-        $(this).append(point)
 
         const foul = $('<button>', {
             text: config.trans.foul,
             click: function() {
-                addPoint(id, -1)
+                addFoul(id, 1)
             }
         })
         $(this).append(foul)
@@ -94,8 +87,8 @@ const teamsJson = function() {
     return [$('#team-1').find('h2').text().replace(/_+/g, '_'), $('#team-2').find('h2').text().replace(/_+/g, '_'), $('#team-3').find('h2').text().replace(/_+/g, '_')]
 }
 
-const addPoint = function(id, point) {
-    $.post('points.php', {
+const addFoul = function(id, point) {
+    $.post('fouls.php', {
         teams: teamsJson(),
         id: id,
         point: point
