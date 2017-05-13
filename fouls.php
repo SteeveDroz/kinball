@@ -14,7 +14,7 @@ if (!empty($_POST['teams']) && !empty($_POST['id']) && !empty($_POST['point']))
     $first = -1;
     $firstPoints = 0;
     $last  = -1;
-    $lastPoints = 999;
+    $lastPoints = PHP_INT_MAX;
     foreach ($game as $teamId => $team)
     {
         if ($team->points > $firstPoints)
