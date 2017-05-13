@@ -6,11 +6,15 @@
     <title>Compteur de scores</title>
     <link rel="stylesheet" href="style.css" type="text/css">
     <script src="jquery-3.1.1.min.js"></script>
+    <script src="js/config.js"></script>
+    <script>
+        loadConfig()
+    </script>
     <script src="js/script-admin.js" defer></script>
 </head>
 
 <body>
-    <h1>Compteur de scores</h1>
+    <h1>scoreCounter</h1>
     <div id="teams">
         <div id="team-1" class="team">
         </div>
@@ -20,9 +24,9 @@
         </div>
     </div>
     <div id="footer"></div>
-    <button id="init">Débuter le match</button>
-    <button id="reload">Nouveau match</button>
-    <button id="start">Synchroniser</button>
+    <button id="init">start</button>
+    <button id="reload">new</button>
+    <button id="start">synchronize</button>
 </body>
 
 </html>

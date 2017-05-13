@@ -2,12 +2,13 @@ let timer
 let eliminated = false
 
 $(function() {
+    $('h1').text(config.trans.scoreCounter)
     const backgrounds = ['blue', 'gray', 'black']
     const colors = ['black', 'black', 'white']
     $('.team').each(function() {
         const id = $(this).attr('id').split('-')[1]
         const title = $('<h2>', {
-            text: `Équipe ${id}`,
+            text: `${config.trans.team} ${id}`,
             css: {
                 'textAlign': 'center'
             }
@@ -16,7 +17,7 @@ $(function() {
         $(this).append(title)
 
         const point = $('<button>', {
-            text: 'Point',
+            text: config.trans.point,
             click: function() {
                 addPoint(id, 1)
             }
@@ -24,7 +25,7 @@ $(function() {
         $(this).append(point)
 
         const foul = $('<button>', {
-            text: 'Faute',
+            text: config.trans.foul,
             click: function() {
                 addPoint(id, -1)
             }
@@ -45,7 +46,7 @@ $(function() {
 
         const set = $('<button>', {
             'class': 'set',
-            text: 'Manche',
+            text: config.trans.period,
             click: function() {
                 addSet(id, 1)
             },
@@ -70,7 +71,7 @@ $(function() {
             timer = setInterval(update, 1000)
         });
     })
-
+    $('#init').text(config.trans.start)
 
     $('#reload').click(function() {
         $.post('save.php', {
@@ -80,10 +81,12 @@ $(function() {
             document.location.href = document.location.href
         })
     })
+    $('#reload').text(config.trans.new)
 
     $('#start').click(function() {
         timer = setInterval(update, 1000)
     })
+    $('#start').text(config.trans.synchronize)
 })
 
 const teamsJson = function() {

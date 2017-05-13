@@ -7,7 +7,7 @@ $(function() {
     $('.team').each(function() {
         const id = $(this).attr('id').split('-')[1]
         const title = $('<h2>', {
-            text: `Équipe ${id}`,
+            text: `${config.trans.team} ${id}`,
             css: {
                 'textAlign': 'center'
             }
@@ -15,7 +15,7 @@ $(function() {
         $(this).append(title)
 
         const point = $('<div>', {
-            text: 'Points',
+            text: config.trans.points,
             css: {
                 fontSize: 40,
                 textAlign: 'center'
@@ -37,7 +37,7 @@ $(function() {
 
         const set = $('<div>', {
             'class': 'set',
-            text: 'Manches',
+            text: config.trans.periods,
             css: {
                 fontSize: 30,
                 textAlign: 'center'
