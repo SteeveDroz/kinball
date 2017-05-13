@@ -2,6 +2,8 @@ let timer
 let eliminated = false
 
 $(function() {
+    $('head title').text(config.trans.scoreCounter)
+    $('h1').text(config.trans.scoreCounter)
     const backgrounds = ['blue', 'gray', 'black']
     const colors = ['black', 'black', 'white']
     $('.team').each(function() {
