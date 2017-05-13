@@ -15,9 +15,4 @@ function getFileName()
 {
     return 'games/current-game.json';
 }
-
-function getSaveName($teams)
-{
-    return 'games/' . preg_replace('/\W/', '-', implode('__', $teams)) . '.json';
-}
- ?>
+?>

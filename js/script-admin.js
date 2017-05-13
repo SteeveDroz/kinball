@@ -68,12 +68,8 @@ $(function() {
     $('#init').text(config.trans.start)
 
     $('#reload').click(function() {
-        $.post('save.php', {
-            teams: teamsJson()
-        }, function() {
-            clearTimeout(timer)
-            document.location.href = document.location.href
-        })
+        clearTimeout(timer)
+        document.location.href = document.location.href
     })
     $('#reload').text(config.trans.new)
 
