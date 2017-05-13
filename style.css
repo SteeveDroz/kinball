@@ -1,0 +1,56 @@
+body {
+    display: flex;
+    flex-flow: column nowrap;
+    font-family: sans-serif;
+    height: 100vh;
+    margin: 0;
+}
+
+h1 {
+    font-size: 40pt;
+    text-align: center;
+}
+
+h2 {
+    font-size: 35pt;
+}
+
+#teams {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+}
+
+.team {
+    background: gray;
+    border-radius: 10px;
+    display: flex;
+    flex-flow: column nowrap;
+    padding: 0px 20px 20px;
+    margin: 0 2px;
+    transition: 1s;
+    min-width: 250px;
+}
+
+button {
+    font-size: 30pt;
+}
+
+.score {
+    font-size: 40pt;
+    text-align: center;
+}
+
+.game {
+    font-size: 30pt;
+    text-align: center;
+}
+
+.space {
+    height: 20px;
+    flex-grow: 1;
+}
+
+#footer {
+    flex-grow: 1;
+}
