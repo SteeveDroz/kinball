@@ -11,9 +11,29 @@ if (!empty($_POST['teams']) && !empty($_POST['id']) && !empty($_POST['point']))
     $file = getFileName($teams);
     $game = file_exists($file) ? json_decode(file_get_contents($file)) : initGame($teams);
 
+    $first = -1;
+    $firstPoints = 0;
+    $last  = -1;
+    $lastPoints = 999;
     foreach ($game as $teamId => $team)
     {
-        if ($teamId != $id)
+        if ($team->points > $firstPoints)
+        {
+            $first = $teamId;
+            $firstPoints = $team->points;
+        }
+        if ($team->points < $lastPoints)
+        {
+            $last = $teamId;
+            $lastPoints = $team->points;
+        }
+    }
+
+    $disabledTeam = $firstPoints > 10 ? $last : -1;
+
+    foreach ($game as $teamId => $team)
+    {
+        if ($teamId != $id && $teamId != $disabledTeam)
         {
             $game->{$teamId}->points += $point;
         }

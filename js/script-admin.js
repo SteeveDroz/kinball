@@ -160,7 +160,7 @@ const update = function() {
 
 const twoTeams = function(lastTeam) {
     $(`#team-${lastTeam}`).find('button').prop('disabled', true)
-    $(`#team-${lastTeam}`).css('opacity', 0.1)
+    $(`#team-${lastTeam}`).css('opacity', 0)
     $('.set').slideDown()
     $('.game').slideDown()
     $('.set').prop('disabled', false)
