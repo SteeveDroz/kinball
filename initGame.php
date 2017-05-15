@@ -8,6 +8,8 @@ function initGame($teams)
         $game->{$i + 1} = (object)['name' => $teams[$i], 'points' => 0, 'sets' => 0];
     }
 
+    $game->finished = false;
+
     return $game;
 }
 

@@ -17,6 +17,11 @@ if (!empty($_POST['teams']) && !empty($_POST['id']) && !empty($_POST['point']))
     $lastPoints = PHP_INT_MAX;
     foreach ($game as $teamId => $team)
     {
+        if ($teamId == 'finished')
+        {
+            continue;
+        }
+
         if ($team->points > $firstPoints)
         {
             $first = $teamId;
@@ -33,6 +38,11 @@ if (!empty($_POST['teams']) && !empty($_POST['id']) && !empty($_POST['point']))
 
     foreach ($game as $teamId => $team)
     {
+        if ($teamId == 'finished')
+        {
+            continue;
+        }
+
         if ($teamId != $id && $teamId != $disabledTeam)
         {
             $game->{$teamId}->points += $point;
@@ -41,10 +51,29 @@ if (!empty($_POST['teams']) && !empty($_POST['id']) && !empty($_POST['point']))
 
     foreach ($game as $teamId => $team)
     {
+        if ($teamId == 'finished')
+        {
+            continue;
+        }
+
         if ($team->points > 12)
         {
             $game = nextPeriod($game);
             $team->sets++;
+            break;
+        }
+    }
+
+    foreach ($game as $teamId => $team)
+    {
+        if ($teamId == 'finished')
+        {
+            continue;
+        }
+
+        if ($team->sets >= 3)
+        {
+            $game->finished = true;
             break;
         }
     }
@@ -57,6 +86,11 @@ function nextPeriod($game)
 {
     foreach ($game as $teamId => $team)
     {
+        if ($teamId == 'finished')
+        {
+            continue;
+        }
+
         $team->points = 0;
     }
 

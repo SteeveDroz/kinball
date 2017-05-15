@@ -107,6 +107,9 @@ const update = function() {
 
         const teams = JSON.parse(data)
         Object.keys(teams).forEach(function(id) {
+            if (id == 'finished') {
+                return
+            }
             const team = teams[id]
 
             maxScore = Math.max(maxScore, team.points)
@@ -130,6 +133,10 @@ const update = function() {
             threeTeams()
             $('.team').css('transform', 'scale(1)').css('z-index', 0)
         }
+
+        $('.team button').each(function() {
+            $(this).attr('disabled', teams.finished)
+        })
     })
     $('.game').each(function() {
         if ($(this).text() > 2) {
