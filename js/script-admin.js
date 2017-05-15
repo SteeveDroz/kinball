@@ -38,13 +38,13 @@ $(function() {
         })
         $(this).append(space)
 
-        const set = $('<button>', {
+        const set = $('<div>', {
             'class': 'set',
-            text: config.trans.period,
-            click: function() {
-                addSet(id, 1)
-            },
-            disabled: true
+            text: config.trans.periods,
+            css: {
+                fontSize: 30,
+                textAlign: 'center'
+            }
         })
         $(this).append(set)
 
@@ -93,22 +93,6 @@ const addFoul = function(id, point) {
         Object.keys(teams).forEach(function(id) {
             $(`#score-${id}`).text(teams[id].points)
         })
-    })
-    update()
-}
-
-const addSet = function(id, set) {
-    $.post('sets.php', {
-        teams: teamsJson(),
-        id: id,
-        set: set
-    }, function(data) {
-        const teams = JSON.parse(data)
-        Object.keys(teams).forEach(function(id) {
-            $(`#game-${id}`).text(teams[id].sets)
-            $(`#score-${id}`).text(teams[id].points)
-        })
-        threeTeams()
     })
     update()
 }

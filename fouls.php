@@ -39,8 +39,28 @@ if (!empty($_POST['teams']) && !empty($_POST['id']) && !empty($_POST['point']))
         }
     }
 
+    foreach ($game as $teamId => $team)
+    {
+        if ($team->points > 12)
+        {
+            $game = nextPeriod($game);
+            $team->sets++;
+            break;
+        }
+    }
+
     file_put_contents($file, json_encode($game));
     echo json_encode($game);
+}
+
+function nextPeriod($game)
+{
+    foreach ($game as $teamId => $team)
+    {
+        $team->points = 0;
+    }
+
+    return $game;
 }
 
 ?>
