@@ -75,6 +75,9 @@ const update = function() {
 
         const teams = JSON.parse(data)
         Object.keys(teams).forEach(function(id) {
+            if (id == 'finished') {
+                return
+            }
             const team = teams[id]
 
             maxScore = Math.max(maxScore, team.points)

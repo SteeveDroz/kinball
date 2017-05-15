@@ -58,25 +58,28 @@ $(function() {
         $(this).css('background', backgrounds[id - 1]).css('color', colors[id - 1])
     })
 
-    $('#init').click(function() {
+    $('#start').click(function() {
         $.post('init.php', {
             teams: teamsJson()
         }, function() {
             timer = setInterval(update, 1000)
-        });
+        })
     })
-    $('#init').text(config.trans.start)
+    $('#start').text(config.trans.start)
 
-    $('#reload').click(function() {
+    $('#new-game').click(function() {
         clearTimeout(timer)
+        $.post('init.php', {
+            teams: teamsJson()
+        })
         document.location.href = document.location.href
     })
-    $('#reload').text(config.trans.new)
+    $('#new-game').text(config.trans.new)
 
-    $('#start').click(function() {
+    $('#synchronize').click(function() {
         timer = setInterval(update, 1000)
     })
-    $('#start').text(config.trans.synchronize)
+    $('#synchronize').text(config.trans.synchronize)
 })
 
 const teamsJson = function() {
