@@ -51,6 +51,11 @@ button {
     flex-grow: 1;
 }
 
+.set {
+    font-size: 20pt;
+    text-align: center;
+}
+
 #footer {
     flex-grow: 1;
 }

@@ -44,11 +44,7 @@ const translate = function() {
 
         const set = $('<div>', {
             'class': 'set',
-            text: config.trans.periods,
-            css: {
-                fontSize: 30,
-                textAlign: 'center'
-            }
+            text: config.trans.periods
         })
         $(this).append(set)
 

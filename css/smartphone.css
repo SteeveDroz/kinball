@@ -1,0 +1,26 @@
+@media screen and (max-width: 900px) {
+    #teams {
+        flex-flow: column;
+    }
+    .team {
+        flex-flow: row wrap;
+        margin-bottom: 10px;
+        align-content: center;
+        padding: 20px;
+        justify-content: space-around;
+        align-items: baseline;
+    }
+    .team h2 {
+        margin: 0;
+    }
+    .team .space {
+        flex-grow: 0;
+    }
+    .team .set, .team .game {
+        font-size: 40pt;
+    }
+    .team button {
+        padding: 20px 5px;
+        border-radius: 20px;
+    }
+}
