@@ -2,6 +2,10 @@ let timer
 let eliminated = false
 
 $(function() {
+    loadConfig.then(translate)
+})
+
+const translate = function() {
     $('head title').text(config.trans.scoreCounter)
     $('h1').text(config.trans.scoreCounter)
     const backgrounds = ['blue', 'gray', 'black']
@@ -80,7 +84,7 @@ $(function() {
         timer = setInterval(update, 1000)
     })
     $('#synchronize').text(config.trans.synchronize)
-})
+}
 
 const teamsJson = function() {
     return [$('#team-1').find('h2').text().replace(/_+/g, '_'), $('#team-2').find('h2').text().replace(/_+/g, '_'), $('#team-3').find('h2').text().replace(/_+/g, '_')]

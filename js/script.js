@@ -2,10 +2,17 @@ let timer
 let eliminated = false
 
 $(function() {
-    $('head title').text(config.trans.scoreCounter)
-    $('h1').text(config.trans.scoreCounter)
+    loadConfig.then(translate)
+
+    timer = setInterval(update, 1000)
+})
+
+const translate = function() {
     const backgrounds = ['blue', 'gray', 'black']
     const colors = ['black', 'black', 'white']
+
+    $('head title').text(config.trans.scoreCounter)
+    $('h1').text(config.trans.scoreCounter)
     $('.team').each(function() {
         const id = $(this).attr('id').split('-')[1]
         const title = $('<h2>', {
@@ -56,9 +63,7 @@ $(function() {
 
         $(this).css('background', backgrounds[id - 1]).css('color', colors[id - 1])
     })
-
-    timer = setInterval(update, 1000)
-})
+}
 
 const teamsJson = function() {
     return [$('#team-1').find('h2').text().replace(/_+/g, '_'), $('#team-2').find('h2').text().replace(/_+/g, '_'), $('#team-3').find('h2').text().replace(/_+/g, '_')]
