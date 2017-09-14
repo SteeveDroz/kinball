@@ -136,9 +136,11 @@ const update = function() {
                 twoTeams(lastTeam)
             }
         } else {
-            eliminated = false
-            threeTeams()
-            $('.team').css('transform', 'scale(1)').css('z-index', 0)
+            if (!teams.finished) {
+                eliminated = false
+                threeTeams()
+                $('.team').css('transform', 'scale(1)').css('z-index', 0)
+            }
         }
 
         $('.team button').each(function() {
